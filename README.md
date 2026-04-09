@@ -150,25 +150,25 @@ Returns a table containing:
 
 Send a raw byte table:
 
-```lua
+```luau
 raknet.sendraw({ 0x83, 0x00, 0x01 })
 ```
 
 Send a hex string:
 
-```lua
+```luau
 raknet.sendhex("83 00 01")
 ```
 
 Send a packet by opcode:
 
-```lua
+```luau
 raknet.sendopcode(0x83, { 0x00, 0x01 })
 ```
 
 Send a physics position:
 
-```lua
+```luau
 raknet.sendphysics(CFrame.new(0, 10, 0))
 raknet.sendposition(Vector3.new(0, 10, 0))
 ```
@@ -177,7 +177,7 @@ raknet.sendposition(Vector3.new(0, 10, 0))
 
 Start capture and listen for packets:
 
-```lua
+```luau
 raknet.startcapture()
 
 local conn = raknet.Capture:Connect(function(packet)
@@ -187,7 +187,7 @@ end)
 
 Listen for a single opcode:
 
-```lua
+```luau
 local conn = raknet.Capture:ConnectOpcode(0x83, function(packet)
     print("data packet:", raknet.tohex(packet.data))
 end)
@@ -195,7 +195,7 @@ end)
 
 One-shot listener:
 
-```lua
+```luau
 raknet.Capture:Once(function(packet)
     print("first packet:", packet.id)
 end)
@@ -203,7 +203,7 @@ end)
 
 Stop capture:
 
-```lua
+```luau
 raknet.stopcapture()
 conn:Disconnect()
 ```
@@ -212,19 +212,19 @@ conn:Disconnect()
 
 Block by prefix:
 
-```lua
+```luau
 raknet.setfilter({ 0x83, 0x00 })
 ```
 
 Block by opcode:
 
-```lua
+```luau
 raknet.blockopcode(0x83)
 ```
 
 Clear filter:
 
-```lua
+```luau
 raknet.clearfilter()
 ```
 
@@ -236,7 +236,7 @@ important: filtering is prefix based.
 
 Most send helpers return:
 
-```lua
+```luau
 local ok, err = raknet.sendopcode(0x83, { 0x00, 0x01 })
 ```
 
@@ -250,20 +250,20 @@ Possible outcomes:
 
 Bytes to hex:
 
-```lua
+```luau
 print(raknet.tohex({ 0x83, 0x00, 0x01 }))
 -- 83 00 01
 ```
 
 Hex to bytes:
 
-```lua
+```luau
 local bytes = raknet.fromhex("83 00 01")
 ```
 
 Packet summary:
 
-```lua
+```luau
 print(raknet.packettostring({
     id = 0x83,
     data = { 0x83, 0x00, 0x01 },
@@ -276,20 +276,20 @@ print(raknet.packettostring({
 
 Get counters:
 
-```lua
+```luau
 local s = raknet.stats()
 print(s.sent, s.captured, s.blocked)
 ```
 
 Reset counters:
 
-```lua
+```luau
 raknet.resetstats()
 ```
 
 Last native send error:
 
-```lua
+```luau
 print(raknet.getlasterror())
 ```
 
