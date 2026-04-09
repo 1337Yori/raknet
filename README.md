@@ -22,7 +22,7 @@
 - `raknet.stats()`
 - `raknet.resetstats()`
 
-## api
+## API
 
 ### Send helpers
 
